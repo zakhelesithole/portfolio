@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zakhele Sithole | Virtual CV</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #ffe6f0; /* light pink */
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      background: #4a148c;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid white;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #6a1b9a;
+    }
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      background: #4a148c;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #6a1b9a;
+      margin-top: 2rem;
+    }
+    .toggle-btn {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      background: #000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .black-mode {
+      background: #000 !important;
+      color: #fff !important;
+    }
+    .black-mode header, .black-mode nav {
+      background: #111 !important;
+    }
+    .black-mode nav a {
+      color: #eee !important;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleBlackMode()">Black Mode</button>
+
+  <header>
+    <img src="zak.png" alt="Zakhele Sithole">
+    <h1>Zakhele Sithole</h1>
+    <p>Final-year BSc Information Technology | AI & Software Development Enthusiast</p>
+    <p>075 296 5327 | <a href="mailto:zakhelesthole0@gmail.com" style="color:white;">zakhelesthole0@gmail.com</a> | 
+      <a href="https://github.com/zakhelesithole" target="_blank" style="color:white;">GitHub</a> |
+      <a href="https://linkedin.com/in/zakhele-sthole-087820376" target="_blank" style="color:white;">LinkedIn</a>
+    </p>
+  </header>
+
+  <nav>
+    <a href="#summary">Summary</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+  </nav>
+
+  <div class="container">
+    <div id="summary" class="section">
+      <h2>Professional Summary</h2>
+      <p>Final-year BSc in Information Technology student at North-West University. Strong foundation in Artificial Intelligence, Mathematics, and Software Development. Passionate about solving real-world problems using scalable, AI-driven solutions. Eager to contribute to dynamic teams in software engineering, data analysis, or AI development.</p>
+    </div>
+
+    <div id="experience" class="section">
+      <h2>Work Experience</h2>
+      <p><strong>Batshazwayo Secondary School (06/2021 - 02/2022)</strong><br />
+      Clerk (SA-SAMS System)<br />
+      - Managed student records, marks, and transfers using SA-SAMS.</p>
+    </div>
+
+    <div id="education" class="section">
+      <h2>Education</h2>
+      <p><strong>North-West University</strong> — BSc Information Technology (Final Year, Expected 2025)</p>
+      <p>Modules: Data Structures & Algorithms, Database Systems, Machine Learning, Web Development, Software Engineering, Mathematics, Basic Accounting</p>
+      <p><strong>Mabaso Secondary School</strong> — National Senior Certificate (2018)</p>
+      <p>Subjects: Mathematics, Physical Sciences, English, Life Sciences</p>
+    </div>
+
+    <div id="projects" class="section">
+      <h2>Projects</h2>
+      <ul>
+        <li><strong>AI Chatbot for Student Support</strong> – Built a chatbot to assist students with frequently asked questions.</li>
+        <li><strong>Student Book Shop System</strong> – Developed a full-stack platform for book sales with real-time inventory.</li>
+        <li><strong>Independent Artists Financial Solutions</strong> – Desktop app for artists to manage finances and generate reports.</li>
+      </ul>
+    </div>
+
+    <div id="skills" class="section">
+      <h2>Skills</h2>
+      <p><strong>Languages:</strong> C#, C++, Java, JavaScript, Python</p>
+      <p><strong>Tools & Tech:</strong> GitHub, MongoDB, Oracle, SQL, Visual Studio, VS Code</p>
+      <p><strong>Soft Skills:</strong> Critical Thinking, Team Collaboration, Technical Documentation, Time Management</p>
+    </div>
+  </div>
+
+  <script>
+    function toggleBlackMode() {
+      document.body.classList.toggle('black-mode');
+    }
+  </script>
+</body>
+</html>
