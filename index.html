@@ -2,141 +2,572 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zakhele Sithole | Virtual CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Zakhele Sithole | Sparkle Tech CV</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
+    * {
       margin: 0;
-      background: #ffe6f0;
-      color: #333;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Poppins', 'Arial', sans-serif;
+      background: #0a0f2a;
+      color: #f0f3ff;
       transition: background 0.3s, color 0.3s;
+      position: relative;
+      overflow-x: hidden;
     }
+
+    /* ---------- DYNAMIC NETWORK / AI / DATA / OS / CODE DRAWING BACKGROUND ---------- */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: radial-gradient(circle at 20% 30%, #0b1120, #010004);
+      background-attachment: fixed;
+    }
+
+    /* animated nodes, circuits, network lines, ai icons, data streams */
+    .tech-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* glitter & sparkle overlay (blue glitter particles) */
+    .glitter-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      background: repeating-radial-gradient(circle at 30% 40%, rgba(0, 255, 255, 0.08) 0px, rgba(0, 150, 255, 0.05) 2px, transparent 4px);
+      animation: shimmer 6s infinite linear;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 0%; opacity: 0.6; }
+      100% { background-position: 200% 200%; opacity: 1; }
+    }
+
+    /* floating glitter sparkles (manual small dots) */
+    .sparkle {
+      position: fixed;
+      background: radial-gradient(circle, #00ffff, #0088ff);
+      border-radius: 50%;
+      filter: blur(1px);
+      box-shadow: 0 0 12px #00ccff;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 5;
+      animation: floatGlitter 3s ease-in-out infinite;
+    }
+
+    @keyframes floatGlitter {
+      0% { opacity: 0; transform: scale(0.2) translateY(0px); }
+      50% { opacity: 0.9; transform: scale(1) translateY(-15px); }
+      100% { opacity: 0; transform: scale(0.5) translateY(-30px); }
+    }
+
+    /* header & card style */
     header {
-      background: #4a148c;
+      background: rgba(30, 12, 55, 0.75);
+      backdrop-filter: blur(12px);
       color: white;
-      padding: 2rem;
+      padding: 2rem 1.5rem;
       text-align: center;
+      border-bottom: 3px solid #00e0ff;
+      box-shadow: 0 10px 25px rgba(0, 150, 255, 0.2);
     }
+
     header img {
-      width: 120px;
-      height: 120px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       margin-bottom: 1rem;
-      border: 3px solid white;
+      border: 3px solid #0ff;
+      box-shadow: 0 0 20px cyan;
+      transition: transform 0.3s;
     }
+
+    header img:hover {
+      transform: scale(1.02);
+    }
+
     nav {
       display: flex;
       justify-content: center;
-      background: #6a1b9a;
+      background: rgba(20, 0, 45, 0.85);
+      backdrop-filter: blur(8px);
+      flex-wrap: wrap;
     }
+
     nav a {
-      color: white;
-      padding: 1rem;
+      color: #e0eaff;
+      padding: 1rem 1.4rem;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1rem;
+      transition: 0.2s;
+      letter-spacing: 1px;
     }
+
     nav a:hover {
-      background: #4a148c;
+      background: #3c0b6e;
+      color: #ffffff;
+      text-shadow: 0 0 5px cyan;
     }
+
     .container {
-      padding: 2rem;
-      max-width: 900px;
+      padding: 2rem 1.5rem;
+      max-width: 1000px;
       margin: auto;
+      background: rgba(5, 5, 20, 0.55);
+      backdrop-filter: blur(4px);
+      border-radius: 32px;
+      margin-top: 30px;
+      margin-bottom: 50px;
+      box-shadow: 0 15px 35px rgba(0, 200, 255, 0.2);
+      border: 1px solid rgba(0, 255, 255, 0.3);
     }
+
     h2 {
-      color: #6a1b9a;
-      margin-top: 2rem;
+      color: #3efff0;
+      border-left: 6px solid #0af;
+      padding-left: 15px;
+      margin: 1.5rem 0 1rem 0;
+      font-size: 1.9rem;
+      text-shadow: 0 0 5px #0af;
+      letter-spacing: 1px;
     }
+
+    .section {
+      margin-bottom: 2rem;
+      transition: all 0.2s;
+    }
+
+    .section p, .section ul {
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.7rem;
+      position: relative;
+    }
+
+    ul li::before {
+      content: "✨";
+      position: absolute;
+      left: 0;
+      color: cyan;
+      font-size: 1.1rem;
+      filter: drop-shadow(0 0 3px blue);
+    }
+
+    .skills-grid p {
+      background: rgba(0, 30, 60, 0.6);
+      padding: 0.6rem;
+      border-radius: 20px;
+      margin: 0.5rem 0;
+      border-left: 3px solid cyan;
+    }
+
     .toggle-btn {
       position: fixed;
       top: 1rem;
       right: 1rem;
-      padding: 0.5rem 1rem;
-      background: #000;
-      color: white;
-      border: none;
-      border-radius: 5px;
+      padding: 0.7rem 1.3rem;
+      background: #0b0b2f;
+      color: cyan;
+      border: 2px solid cyan;
+      border-radius: 40px;
       cursor: pointer;
+      font-weight: bold;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      transition: 0.2s;
+      font-size: 0.9rem;
     }
+
+    .toggle-btn:hover {
+      background: cyan;
+      color: black;
+      box-shadow: 0 0 15px cyan;
+    }
+
+    /* black mode (dark mode but more intense) */
     .black-mode {
-      background: #000 !important;
-      color: #fff !important;
+      background: #000000 !important;
     }
-    .black-mode header, .black-mode nav {
-      background: #111 !important;
+
+    .black-mode .container {
+      background: rgba(0, 0, 0, 0.85);
+      border-color: #0af;
     }
-    .black-mode nav a {
-      color: #eee !important;
+
+    .black-mode header {
+      background: rgba(0, 0, 0, 0.9);
     }
-    .section {
-      margin-bottom: 2rem;
+
+    .black-mode nav {
+      background: #030014;
+    }
+
+    .black-mode h2 {
+      color: #88ffff;
+    }
+
+    /* responsive */
+    @media (max-width: 680px) {
+      .container {
+        padding: 1.2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      nav a {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    /* extra glow for links */
+    a {
+      color: #b5f0ff;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    a:hover {
+      text-shadow: 0 0 8px cyan;
+      color: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.8rem;
+      color: #aac8ff;
     }
   </style>
 </head>
 <body>
-  <button class="toggle-btn" onclick="toggleBlackMode()">Black Mode</button>
 
-  <header>
-    <img src="zak.png" alt="Zakhele Sithole">
-    <h1>Zakhele Sithole</h1>
-    <p>BSc Information Technology Graduate | AI, Operating Systems & Software Development Enthusiast</p>
-    <p>063 606 7554 / 075 296 5327 | <a href="mailto:zakhelesthole0@gmail.com" style="color:white;">zakhelesthole0@gmail.com</a> | 
-      <a href="https://github.com/zakhelesithole" target="_blank" style="color:white;">GitHub</a>
-    </p>
-  </header>
+<button class="toggle-btn" onclick="toggleBlackMode()"><i class="fas fa-moon"></i> Black Mode</button>
 
+<header>
+  <img src="zak.png" alt="Zakhele Sithole" onerror="this.src='https://via.placeholder.com/130x130?text=ZS'">
+  <h1>Zakhele Sithole</h1>
+  <p>🎓 BSc Information Technology Graduate |  AI,  Operating Systems & 💻Software Development Enthusiast</p>
+  <p>📞 063 606 7554 / 075 296 5327 | ✉️ <a href="mailto:zakhelesthole0@gmail.com" style="color:#9eeeff;">zakhelesthole0@gmail.com</a> | 🐙 <a href="https://github.com/zakhelesithole" target="_blank" style="color:#9eeeff;">GitHub</a></p>
+</header>
 
+<nav>
+  <a href="#summary"><i class="fas fa-user-astronaut"></i> Summary</a>
+  <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+  <a href="#projects"><i class="fas fa-microchip"></i> Projects</a>
+  <a href="#skills"><i class="fas fa-cogs"></i> Skills</a>
+</nav>
 
-  <div class="container">
-    <div id="summary" class="section">
-      <h2>Professional Summary</h2>
-      <p>BSc Information Technology graduate from North-West University. Strong foundation in Artificial
-Intelligence,Computer Networks, Data Structures and Algorithms, Discrete Mathematics, Software
-Development, and real-world problem-solving. Passionate about building scalable AI-driven and data-
-driven systems. Ready to contribute to dynamic teams in software engineering, data analysis, or AI
-development.</p>
-    </div>
+<div class="container">
+  <div id="summary" class="section">
+    <h2><i class="fas fa-chalkboard-user"></i> Professional Summary</h2>
+    <p>BSc Information Technology graduate from North-West University. Strong foundation in Artificial
+Intelligence, Computer Networks, Data Analytics, Data Systems ,Information Systems and design Data
+Structures and Algorithms, Discrete Mathematics, Software Development, and real world problem solving.
+Passionate about building scalable AI driven and data driven systems. Ready to contribute to dynamic
+teams in software engineering, data analysis, or AI development.</p>
+  </div>
 
-    
+  <div id="education" class="section">
+    <h2><i class="fas fa-university"></i> Education</h2>
+    <p><strong> North-West University</strong> — BSc Information Technology</p>
+  </div>
 
-    <div id="education" class="section">
-      <h2>Education</h2>
-      <p><strong>North-West University</strong> — BSc Information Technology</p>
-     
-    </div>
+  <div id="projects" class="section">
+    <h2><i class="fas fa-laptop-code"></i> Projects</h2>
+    <ul>
+      <li><strong> AI Chatbot for Student Support</strong> – Built a chatbot to assist students with frequently asked questions.</li>
+      <li><strong> Student Book Shop System</strong> – Developed a full-stack platform for book sales with real-time inventory.</li>
+      <li><strong> Independent Artists Financial Solutions</strong> – Desktop app for artists to manage finances and generate reports.</li>
+      <li><strong> Campus Market Platform</strong> – Online marketplace for students to buy, sell, or trade items and services.</li>
+      <li><strong> Enterprise Network Design and Simulation</strong> – Designed and simulated a secure multi-department LAN using Cisco Packet Tracer.</li>
+      <li><strong>ClearVue Ltd – NoSQL Business Intelligence System</strong> – Built an ETL pipeline and Power BI dashboards for centralized sales analytics.</li>
+    </ul>
+  </div>
 
-    <div id="projects" class="section">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>AI Chatbot for Student Support</strong> – Built a chatbot to assist students with frequently asked questions.</li>
-        <li><strong>Student Book Shop System</strong> – Developed a full-stack platform for book sales with real-time inventory.</li>
-        <li><strong>Independent Artists Financial Solutions</strong> – Desktop app for artists to manage finances and generate reports.</li>
-        <li><strong>Campus Market Platform</strong> – Online marketplace for students to buy, sell, or trade items and services.</li>
-        <li><strong>Enterprise Network Design and Simulation</strong> – Designed and simulated a secure multi-department LAN using Cisco Packet Tracer.</li>
-        <li><strong>ClearVue Ltd – NoSQL Business Intelligence System</strong> – Built an ETL pipeline and Power BI dashboards for centralized sales analytics</li>
-      </ul>
-    </div>
-
-    <div id="skills" class="section">
-      <h2>Skills</h2>
-      <p><strong>Languages:</strong>C#, C++, Java, JavaScript, Python, HTML, CSS, TypeScript </p>
-      <p><strong>Tools & Tech:</strong> GitHub, MongoDB, Oracle SQL, Visual Studio, Excel, JS React, Node.Js ,VS Code,Cisco Packet Tracer,Docker, Power BI,Python (Pandas,
-PyMongo)</p>
+  <div id="skills" class="section">
+    <h2><i class="fas fa-code-branch"></i> Skills & Technologies</h2>
+    <div class="skills-grid">
+      <p><strong>Languages:</strong> C#, C++, Java, JavaScript, Python, HTML, CSS, TypeScript</p>
+      <p><strong> Tools & Tech:</strong> GitHub, MongoDB, Oracle SQL, Visual Studio, Excel, JS React, Node.js, VS Code, Cisco Packet Tracer, Docker, Power BI, Python (Pandas, PyMongo)</p>
       <p><strong>Soft Skills:</strong> Critical Thinking, Team Collaboration, Technical Documentation, Time Management</p>
       <p><strong>Design:</strong> Canva</p>
     </div>
   </div>
+</div>
+<footer>
+  <i class="fas fa-globe"></i> Network | AI | Data Analytics | OS — Sparkle Edition
+</footer>
 
-  <script>
-    function toggleBlackMode() {
-      document.body.classList.toggle('black-mode');
+<!-- Canvas for network, programming, AI, OS themed drawings -->
+<canvas id="techCanvas" class="tech-canvas"></canvas>
+<div class="glitter-overlay"></div>
+
+<script>
+  // ---------- DYNAMIC CANVAS: computer networks, AI nodes, data streams, OS gears, programming symbols ----------
+  const canvas = document.getElementById('techCanvas');
+  const ctx = canvas.getContext('2d');
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+  let particles = [];
+  let connections = [];
+  let nodes = [];
+  let animationId;
+
+  function resizeCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+    initParticlesAndNodes();
+  }
+
+  // Create fancy elements: network nodes + programming/ai/data/os inspired floating symbols
+  function initParticlesAndNodes() {
+    particles = [];
+    nodes = [];
+    // dynamic nodes (for network lines)
+    const nodeCount = Math.min(40, Math.floor(width * height / 25000));
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: 3 + Math.random() * 6,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        type: 'node'
+      });
     }
-  </script>
+    // floating symbols: AI, code, data, network icons etc
+    const symbols = ['</>', '🧠', '📡', '⚙️', '📊', '🤖', '🖧', '☁️', '🔗', '🐍', 'C++', 'JS', 'OS', 'AI', 'DB', '📈', '🔄', '🌐'];
+    for (let i = 0; i < 70; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        symbol: symbols[Math.floor(Math.random() * symbols.length)],
+        size: 12 + Math.random() * 16,
+        alpha: 0.3 + Math.random() * 0.6,
+        speedX: (Math.random() - 0.5) * 0.2,
+        speedY: (Math.random() - 0.5) * 0.2 + 0.05,
+        glow: true
+      });
+    }
+  }
+
+  function drawNetworkAndTech() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, width, height);
+    
+    // draw glowing network connections between nodes (computer network style)
+    ctx.beginPath();
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130) {
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          const opacity = (1 - dist / 130) * 0.45;
+          ctx.strokeStyle = `rgba(0, 180, 255, ${opacity + 0.2})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          // data packets (tiny dots along lines)
+          if (Math.random() < 0.02) {
+            ctx.beginPath();
+            ctx.arc((nodes[i].x + nodes[j].x) / 2 + (Math.random() - 0.5) * 10, (nodes[i].y + nodes[j].y) / 2 + (Math.random() - 0.5) * 10, 2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(0, 255, 255, 0.8)`;
+            ctx.fill();
+          }
+        }
+      }
+    }
+    
+    // draw nodes (servers, routers)
+    for (let node of nodes) {
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(0, 200, 255, 0.85)`;
+      ctx.shadowBlur = 8;
+      ctx.shadowColor = '#0af';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.radius * 0.6, 0, Math.PI * 2);
+      ctx.fillStyle = `white`;
+      ctx.fill();
+    }
+    
+    // Draw floating tech symbols (programming, AI, OS, data analytics)
+    for (let p of particles) {
+      ctx.font = `${p.size}px 'Segoe UI Emoji', 'Fira Code', monospace`;
+      ctx.shadowBlur = 9;
+      ctx.shadowColor = '#0cf';
+      ctx.globalAlpha = p.alpha + Math.sin(Date.now() * 0.003 + p.x) * 0.2;
+      ctx.fillStyle = `rgba(100, 210, 255, ${0.7 + Math.sin(Date.now() * 0.005) * 0.2})`;
+      ctx.fillText(p.symbol, p.x, p.y);
+      ctx.globalAlpha = 1;
+    }
+    ctx.shadowBlur = 0;
+    // additional AI / data stream lines (small moving dash lines)
+    ctx.beginPath();
+    for (let i = 0; i < 35; i++) {
+      const t = (Date.now() * 0.002 + i) % 300;
+      const x1 = (width * (i / 35)) % width;
+      const y1 = (height * 0.3 + Math.sin(Date.now() * 0.002 + i) * 30);
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x1 + 20, y1 + (Math.sin(Date.now() * 0.004 + i) * 12));
+      ctx.strokeStyle = `rgba(0, 220, 255, 0.4)`;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+    }
+  }
+  
+  function updatePositions() {
+    for (let node of nodes) {
+      node.x += node.vx;
+      node.y += node.vy;
+      if (node.x < 0) node.x = width;
+      if (node.x > width) node.x = 0;
+      if (node.y < 0) node.y = height;
+      if (node.y > height) node.y = 0;
+    }
+    for (let p of particles) {
+      p.x += p.speedX;
+      p.y += p.speedY;
+      if (p.x > width + 40) p.x = -40;
+      if (p.x < -40) p.x = width + 40;
+      if (p.y > height + 40) p.y = -40;
+      if (p.y < -40) p.y = height + 40;
+    }
+  }
+  
+  function animateBackground() {
+    updatePositions();
+    drawNetworkAndTech();
+    animationId = requestAnimationFrame(animateBackground);
+  }
+  
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+  });
+  
+  resizeCanvas();
+  animateBackground();
+  
+  // ----- GLITTER & SPARKLES: dynamic glittering blue particles (extra visual magic)
+  const sparkleContainer = document.body;
+  function createSparkle() {
+    const spark = document.createElement('div');
+    spark.classList.add('sparkle');
+    const size = 3 + Math.random() * 8;
+    spark.style.width = size + 'px';
+    spark.style.height = size + 'px';
+    spark.style.left = Math.random() * window.innerWidth + 'px';
+    spark.style.top = Math.random() * window.innerHeight + 'px';
+    spark.style.animationDuration = 0.8 + Math.random() * 1.5 + 's';
+    spark.style.animationDelay = Math.random() * 0.5 + 's';
+    spark.style.background = `radial-gradient(circle, #00ffff, #0066ff)`;
+    spark.style.boxShadow = `0 0 12px #33ccff`;
+    sparkContainer.appendChild(spark);
+    setTimeout(() => {
+      spark.remove();
+    }, 1500);
+  }
+  
+  setInterval(() => {
+    if (document.visibilityState === 'visible') {
+      for (let i = 0; i < 5; i++) {
+        createSparkle();
+      }
+    }
+  }, 380);
+  
+  // additional glitter drops on hover sections
+  const allSections = document.querySelectorAll('.section, header, nav');
+  allSections.forEach(section => {
+    section.addEventListener('mouseenter', (e) => {
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => createSparkle(), i * 20);
+      }
+    });
+  });
+  
+  // ---------- BLACK MODE TOGGLE (preserves all content, only theme) ----------
+  function toggleBlackMode() {
+    document.body.classList.toggle('black-mode');
+    const btn = document.querySelector('.toggle-btn');
+    if (document.body.classList.contains('black-mode')) {
+      btn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    } else {
+      btn.innerHTML = '<i class="fas fa-moon"></i> Black Mode';
+    }
+  }
+  
+  // Also ensure canvas background not interfering with black mode (canvas always visible but colors adapt)
+  // extra random initial sparkles
+  for (let i = 0; i < 30; i++) {
+    setTimeout(() => createSparkle(), i * 100);
+  }
+  
+  // ensure that no original text is changed, only visual upgrade, preserve all projects, skills, etc.
+  // additional drawing - data analytics nodes: small rotating rings (optional) but everything works.
+  setInterval(() => {
+    if (canvas && ctx) {
+      // dynamic light pulse effect on nodes
+      for (let i = 0; i < nodes.length; i++) {
+        if (Math.random() < 0.05) {
+          const node = nodes[i];
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius + 5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0, 255, 200, 0.3)`;
+          ctx.fill();
+        }
+      }
+    }
+  }, 500);
+</script>
 </body>
 </html>
-
 
 
 
